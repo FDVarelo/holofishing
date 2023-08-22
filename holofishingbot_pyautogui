@@ -1,0 +1,60 @@
+import pyautogui
+import pydirectinput as di
+import keyboard
+
+###################
+### PROTOTYPE 1 ###
+###################
+
+### Prototype 1 uncomment below lines until before the Protorype 2 comment
+# while keyboard.is_pressed('q') == False:
+
+#     if(pyautogui.locateOnScreen('assets/indicator.png', region=(1224,270,51,81),grayscale=True,confidence=0.8)):
+#         # Worked better with the grayscale on
+#         if(pyautogui.locateOnScreen('assets/up.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
+#             di.press("w")
+#         elif(pyautogui.locateOnScreen('assets/down.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
+#             di.press("s")
+#         elif(pyautogui.locateOnScreen('assets/left.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
+#             di.press("a")
+#         elif(pyautogui.locateOnScreen('assets/right.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
+#             di.press("d")
+#         elif(pyautogui.locateOnScreen('assets/circle.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
+#             di.press("space")
+#     else:
+#         di.press("space")
+
+
+###################
+### PROTOTYPE 2 ###
+###################
+
+### Prototype 2 color pick uncomment the below lines:
+
+## color of each input possible
+# colorCirc = (174,  49, 209)
+# colorUp = (225,  50,  50)
+# colorDown = ( 52, 144, 245)
+# colorLeft = (246, 198,  67)
+# colorRight = ( 45, 235,  43)
+
+# while keyboard.is_pressed('q') == False: # hold 'q' to quit
+
+#     if(pyautogui.locateOnScreen('assets/indicator.png', region=(1224,270,51,81),grayscale=True,confidence=0.8)):
+#         s = pyautogui.screenshot(region=(1131,708,96,96)) #print of the area to read
+#         for x in range(96): # running pixel by pixel in the area
+#             for y in range(96):
+#                 # If it matches with any color of the inputs
+#                 if colorCirc == s.pixel((x,y)):
+#                     di.press("space")
+#                 elif colorUp == s.pixel((x,y)):
+#                     di.press("w")
+#                 elif colorDown == s.pixel((x,y)):
+#                     di.press("s")
+#                 elif colorLeft == s.pixel((x,y)):
+#                     di.press("a")
+#                 elif colorRight == s.pixel((x,y)):
+#                     di.press("d")
+#     else:
+#         di.press("space")
+#         print("space")
