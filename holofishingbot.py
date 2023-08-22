@@ -2,6 +2,7 @@ import mss
 import cv2 as cv
 import numpy as np
 import pydirectinput as di
+import keyboard
 
 # Images models
 INDICATOR = cv.imread('assets/indicator.png', cv.IMREAD_GRAYSCALE) # Fishing model
@@ -12,17 +13,17 @@ RIGHT = cv.imread('assets/right.png', cv.IMREAD_GRAYSCALE)
 CIRCLE = cv.imread('assets/circle.png', cv.IMREAD_GRAYSCALE)
 
 isFishingLocal = {"top": 270, "left": 1224, "width": 51, "height": 81} # Fishing mode location
-captureMovNow = {"top": 708, "left": 1131, "width": 96, "height": 96}  # Local to capture the input to do now
+captureMovNow = {"top": 708, "left": 1121, "width": 106, "height": 96}  # Local to capture the input to do now
 
 with mss.mss() as sct:
-    while True:
+    while keyboard.is_pressed('q') == False: # hold 'q' to quit
         # Verifying if is now on fishing mode
         Fishing = np.array(sct.grab(isFishingLocal))
         Fishing = cv.cvtColor(Fishing, cv.COLOR_BGRA2GRAY)
         resultFishing = cv.matchTemplate(Fishing,INDICATOR,cv.TM_CCOEFF_NORMED)
 
         # If is on fishing mode
-        if(cv.minMaxLoc(resultFishing)[1] > 0.9):
+        if(cv.minMaxLoc(resultFishing)[1] > 0.9): #since is stating, it can be > 0.9
             
                 MovNow = np.array(sct.grab(captureMovNow))
                 target = cv.cvtColor(MovNow, cv.COLOR_BGRA2GRAY)
@@ -33,15 +34,15 @@ with mss.mss() as sct:
                 resRight = cv.matchTemplate(target, RIGHT, cv.TM_CCOEFF_NORMED)
                 resCircle = cv.matchTemplate(target, CIRCLE, cv.TM_CCOEFF_NORMED)
 
-                if (cv.minMaxLoc(resUp)[1] >= 0.9):
+                if (cv.minMaxLoc(resUp)[1] > 0.8):
                     di.press("w")
-                elif (cv.minMaxLoc(resDown)[1] >= 0.9):
+                elif (cv.minMaxLoc(resDown)[1] > 0.8):
                     di.press("s")
-                elif (cv.minMaxLoc(resLeft)[1] >= 0.9):
+                elif (cv.minMaxLoc(resLeft)[1] > 0.8):
                     di.press("a")
-                elif (cv.minMaxLoc(resRight)[1] >= 0.9):
+                elif (cv.minMaxLoc(resRight)[1] > 0.8):
                     di.press("d")
-                elif (cv.minMaxLoc(resCircle)[1] >= 0.9):
+                elif (cv.minMaxLoc(resCircle)[1] > 0.8):
                     di.press("space")
 
         # Not on fishing mode
