@@ -2,15 +2,12 @@ import pyautogui
 import pydirectinput as di
 import keyboard
 
-###################
-### PROTOTYPE 1 ###
-###################
+# #Prototype 1 uncomment below lines until before the Protorype 2 comment
 
-### Prototype 1 uncomment below lines until before the Protorype 2 comment
 # while keyboard.is_pressed('q') == False:
 
 #     if(pyautogui.locateOnScreen('assets/indicator.png', region=(1224,270,51,81),grayscale=True,confidence=0.8)):
-#         # Worked better with the grayscale on
+
 #         if(pyautogui.locateOnScreen('assets/up.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
 #             di.press("w")
 #         elif(pyautogui.locateOnScreen('assets/down.png', region=(1121,708,106,96),grayscale=True,confidence=0.8)):
@@ -24,37 +21,31 @@ import keyboard
 #     else:
 #         di.press("space")
 
-
-###################
-### PROTOTYPE 2 ###
-###################
-
-### Prototype 2 color pick uncomment the below lines:
-
-## color of each input possible
+#Prototype 2 color pick uncomment the below lines:
 # colorCirc = (174,  49, 209)
 # colorUp = (225,  50,  50)
 # colorDown = ( 52, 144, 245)
 # colorLeft = (246, 198,  67)
 # colorRight = ( 45, 235,  43)
 
-# while keyboard.is_pressed('q') == False: # hold 'q' to quit
+# while keyboard.is_pressed('q') == False:
 
 #     if(pyautogui.locateOnScreen('assets/indicator.png', region=(1224,270,51,81),grayscale=True,confidence=0.8)):
-#         s = pyautogui.screenshot(region=(1131,708,96,96)) #print of the area to read
-#         for x in range(96): # running pixel by pixel in the area
-#             for y in range(96):
-#                 # If it matches with any color of the inputs
-#                 if colorCirc == s.pixel((x,y)):
+#         print("encontrei peixe")
+#         s = pyautogui.screenshot(region=(1131,708,96,96))
+#         for x in range(0,96,2):
+#             for y in range(0,96,2):
+#                 r,g,b = s.getpixel((x,y))
+#                 if (r in range(colorCirc[0]-2,colorCirc[0]+2) and g in range(colorCirc[1]-2,colorCirc[1]+2) and b in range(colorCirc[2]-2,colorCirc[2]+2)):
 #                     di.press("space")
-#                 elif colorUp == s.pixel((x,y)):
+#                 elif (r in range(colorUp[0]-2,colorUp[0]+2) and g in range(colorUp[1]-2,colorUp[1]+2) and b in range(colorUp[2]-2,colorUp[2]+2)):
 #                     di.press("w")
-#                 elif colorDown == s.pixel((x,y)):
+#                 elif (r in range(colorDown[0]-2,colorDown[0]+2) and g in range(colorDown[1]-2,colorDown[1]+2) and b in range(colorDown[2]-2,colorDown[2]+2)):
 #                     di.press("s")
-#                 elif colorLeft == s.pixel((x,y)):
+#                 elif (r in range(colorLeft[0]-2,colorLeft[0]+2) and g in range(colorLeft[1]-2,colorLeft[1]+2) and b in range(colorLeft[2]-2,colorLeft[2]+2)):
 #                     di.press("a")
-#                 elif colorRight == s.pixel((x,y)):
+#                 elif (r in range(colorRight[0]-2,colorRight[0]+2) and g in range(colorRight[1]-2,colorRight[1]+2) and b in range(colorRight[2]-2,colorRight[2]+2)):
 #                     di.press("d")
 #     else:
-#         di.press("space")
 #         print("space")
+#         di.press("space")      
