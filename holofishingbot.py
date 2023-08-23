@@ -3,6 +3,7 @@ import cv2 as cv
 import numpy as np
 import pydirectinput as di
 import keyboard
+import pyautogui
 
 ### Images models.
 INDICATOR = cv.imread('assets/indicator.png', cv.IMREAD_GRAYSCALE) ### Fishing model.
