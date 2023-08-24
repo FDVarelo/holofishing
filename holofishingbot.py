@@ -6,7 +6,7 @@ import keyboard
 import pyautogui
 
 ### Images models.
-INDICATOR = cv.imread('assets/indicator.png', cv.IMREAD_GRAYSCALE) ### Fishing model.
+#INDICATOR = cv.imread('assets/indicator.png', cv.IMREAD_GRAYSCALE) ### Fishing model.
 UP = cv.imread('assets/up.png', cv.IMREAD_GRAYSCALE)
 DOWN = cv.imread('assets/down.png', cv.IMREAD_GRAYSCALE)
 LEFT = cv.imread('assets/left.png', cv.IMREAD_GRAYSCALE)
@@ -20,12 +20,8 @@ with mss.mss() as sct:
     while keyboard.is_pressed('q') == False: ### hold 'q' to quit.
         ### Verifying if is now on fishing mode
         r,g,b = pyautogui.pixel(1181,696) ### Get one pixel of the arrow above the input now, faster than getting the fishing icon.
-        #Fishing = np.array(sct.grab(isFishingLocal))
-        #Fishing = cv.cvtColor(Fishing, cv.COLOR_BGRA2GRAY)
-        #resultFishing = cv.matchTemplate(Fishing,INDICATOR,cv.TM_CCOEFF_NORMED)
-
+        
         ### If is on fishing mode.
-        #if(cv.minMaxLoc(resultFishing)[1] > 0.9): ###since is stating, it can be > 0.9
         if r == 251 and g == 251 and b == 251: ### Faster than verifying the minMaxLoc and searching similar images.    
                 MovNow = np.array(sct.grab(captureMovNow))
                 target = cv.cvtColor(MovNow, cv.COLOR_BGRA2GRAY)
